@@ -17,3 +17,35 @@ export const getArticles = (topic) => {
       return articles;
     });
 };
+
+export const getArticleById = (article_id) => {
+  return ncNewsApi
+    .get(`/articles/${article_id}`)
+    .then(({ data: { articles } }) => {
+      return articles;
+    });
+};
+
+export const patchArticleVotes = (article_id, inc_votes) => {
+  return ncNewsApi
+    .patch(`/articles/${article_id}`, { inc_votes })
+    .then(({ data: { articles } }) => {
+      return articles;
+    });
+};
+
+export const patchCommentVotes = (comment_id, inc_votes) => {
+  return ncNewsApi
+    .patch(`/comments/${comment_id}`, { inc_votes })
+    .then(({ data: { articles } }) => {
+      return articles;
+    });
+};
+
+export const getComments = (article_id) => {
+  return ncNewsApi
+    .get(`/articles/${article_id}/comments`)
+    .then(({ data: { comments } }) => {
+      return comments;
+    });
+};

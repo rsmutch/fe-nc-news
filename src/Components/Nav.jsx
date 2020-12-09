@@ -44,7 +44,7 @@ const Nav = () => {
           {topics.map((topic) => {
             return (
               <option key={topic.slug} value={topic.slug}>
-                {topic.slug}
+                {capitalise(topic.slug)}
               </option>
             );
           })}
