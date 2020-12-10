@@ -50,6 +50,47 @@ nav .nav-topic-formControl {
   background-color: #f6f6f6;
 }
 
+.nav-login-or-logged-in {
+  margin-left: auto;
+  display: flex;
+}
+
+.nav-login {
+  padding: 10px;
+  border-left: 1px solid #ebebeb34;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: black;
+  font-size: small;
+  background-color: #f6f6f6;
+}
+
+.nav-logged-in {
+  padding: 0;
+  border-left: 1px solid #ebebeb34;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: black;
+  font-size: small;
+  margin: 0;
+  align-self: center;
+}
+
+.nav-logged-in * {
+  padding: 0;
+  border-left: 1px solid #ebebeb34;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: black;
+  font-size: small;
+  margin: 0;
+  text-align: right;
+}
+
+.nav-logout {
+  cursor: pointer;
+}
+
 #topic-label {
   display: none;
 }
@@ -93,8 +134,11 @@ nav .nav-topic-formControl {
   text-decoration: none;
 }
 
-.article-card-author {
+.article-card-author * {
   grid-area: author;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
 }
 
 .article-card-author img {
@@ -109,6 +153,11 @@ nav .nav-topic-formControl {
 .article-card-comments {
   grid-area: comments;
   justify-self: flex-end;
+}
+
+.article-card-comments * {
+  text-decoration: none;
+  color: black;
 }
 
 .article-card-comments img {
@@ -149,6 +198,11 @@ nav .nav-topic-formControl {
   grid-area: author;
   margin-bottom: 0;
   font-weight: bold;
+}
+
+.article-container-author * {
+  color: black;
+  text-decoration: none;
 }
 
 .article-container-comments {
@@ -196,6 +250,15 @@ nav .nav-topic-formControl {
   border: 1px solid black;
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.comments-login {
+  color: black;
+  text-decoration: none;
+  margin-bottom: 10px;
+  border: 1px solid lightgray;
+  padding: 5px 20px;
 }
 
 .comment-adder-form {
@@ -203,20 +266,32 @@ nav .nav-topic-formControl {
   flex-direction: column;
   align-items: center;
   padding: 10px;
+  width: 90%;
 }
 
 .comment-adder-textbox {
   width: 100%;
-  height: min-content;
+  resize: none;
+  height: 100px;
 }
 
 .comment-adder-submit {
   width: 50%;
 }
 
+.comment-adder-added {
+  width: 100%;
+  background-color: #b0ffa8;
+  text-align: center;
+}
+
+.toggle-comment-adder {
+  margin-bottom: 10px;
+}
+
 .comment-card {
   display: grid;
-  grid-template-areas: 'author votes' 'body body' 'created .';
+  grid-template-areas: 'author votes' 'body body' 'created delete';
   background-color: white;
   border: 1px solid black;
   margin-bottom: 10px;
@@ -224,6 +299,7 @@ nav .nav-topic-formControl {
   padding: 1em;
   margin-left: 10px;
   margin-right: 10px;
+  align-self: stretch;
 }
 
 .comment-card-author {
@@ -236,6 +312,21 @@ nav .nav-topic-formControl {
 
 .comment-card-created {
   grid-area: created;
+}
+
+.comment-card-delete {
+  grid-area: delete;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  font-family: Helvetica;
+  font-size: x-small;
+  color: slategray;
+}
+
+.delete-x:hover {
+  cursor: pointer;
+  color: #ff0000;
 }
 
 .voter {
@@ -251,24 +342,72 @@ nav .nav-topic-formControl {
   margin-right: 5px;
 }
 
+.login-container {
+  padding: 30px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.username-lbl {
+  text-align: right;
+}
+
+.username-tb {
+  width: 16em;
+  justify-self: center;
+}
+
+.password-lbl {
+  text-align: right;
+}
+
+.password-tb {
+  width: 16em;
+  justify-self: center;
+}
+
+.login-button {
+  width: 16em;
+  justify-self: center;
+  margin: 10px;
+}
+
+.login-register {
+  width: 16em;
+  margin: 10px;
+}
+
+.login-hr {
+  width: 14em;
+  color: rgba(255, 255, 255, 0.52);
+}
+
+.register-container {
+  padding: 30px;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register-login-button {
+  width: 16em;
+  justify-self: center;
+  margin: 10px;
+}
+
 @media (max-width: 900px) {
   body {
     /* background-color: lightblue; */
   }
   .site_title {
     font-size: large;
-  }
-  nav li {
-    display: none;
-  }
-
-  .nav {
-    padding: 0px;
-  }
-  nav .nav-topic-formControl {
-    display: inline-block;
-    align-self: center;
-    width: 100px;
   }
   #topic-label {
     display: flex;
@@ -300,5 +439,19 @@ nav .nav-topic-formControl {
 
   .article-card {
     height: fit-content;
+  }
+}
+@media (max-width: 500px) {
+  nav li {
+    display: none;
+  }
+
+  .nav {
+    padding: 0px;
+  }
+  nav .nav-topic-formControl {
+    display: inline-block;
+    align-self: center;
+    width: 100px;
   }
 }

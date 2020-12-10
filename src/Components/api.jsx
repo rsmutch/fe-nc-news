@@ -10,9 +10,11 @@ export const getTopics = () => {
   });
 };
 
-export const getArticles = (topic) => {
+export const getArticles = (topic, author, sortBy, sortOrder) => {
   return ncNewsApi
-    .get('/articles', { params: { topic } })
+    .get('/articles', {
+      params: { topic, author, sort_by: sortBy, order: sortOrder }
+    })
     .then(({ data: { articles } }) => {
       return articles;
     });
@@ -48,4 +50,28 @@ export const getComments = (article_id) => {
     .then(({ data: { comments } }) => {
       return comments;
     });
+};
+
+export const postComment = (article_id, body, username) => {
+  return ncNewsApi
+    .post(`/articles/${article_id}/comments`, { username, body })
+    .then(({ data: { comment } }) => {
+      return comment;
+    });
+};
+
+export const deleteComment = (comment_id) => {
+  return ncNewsApi.delete(`/comments/${comment_id}`);
+};
+
+export const postNewUser = (username) => {
+  return ncNewsApi.post(`/users`, { username }).then(({ data: { user } }) => {
+    return user;
+  });
+};
+
+export const getAllUsers = () => {
+  return ncNewsApi.get('/users').then(({ data: { users } }) => {
+    return users;
+  });
 };

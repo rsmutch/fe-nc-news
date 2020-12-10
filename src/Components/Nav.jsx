@@ -5,7 +5,7 @@ import { Link, navigate } from '@reach/router';
 import FormControl from '@material-ui/core/FormControl';
 import NativeSelect from '@material-ui/core/NativeSelect';
 
-const Nav = () => {
+const Nav = ({ username, setUsername }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [topics, setTopics] = useState();
 
@@ -18,6 +18,10 @@ const Nav = () => {
 
   const onChange = ({ target }) => {
     navigate(`/topics/${target.value}`);
+  };
+
+  const handleLogout = () => {
+    setUsername('');
   };
 
   if (isLoading) return <p>Loading...</p>;
@@ -50,6 +54,19 @@ const Nav = () => {
           })}
         </NativeSelect>
       </FormControl>
+      <div className="nav-login-or-logged-in"></div>
+      {username ? (
+        <div className="nav-logged-in">
+          Logged in as {username}
+          <div className="nav-logout" onClick={handleLogout}>
+            Logout
+          </div>
+        </div>
+      ) : (
+        <Link className="nav-login" to={`/login`}>
+          Login
+        </Link>
+      )}
     </nav>
   );
 };

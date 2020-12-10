@@ -4,29 +4,30 @@ import { timeFormatter } from '../utils/timeFormatter';
 import { Link } from '@reach/router';
 import Voter from './Voter';
 
-const ArticleCard = ({
-  title,
-  author,
-  created_at,
-  votes,
-  topic,
-  comment_count,
-  article_id
-}) => {
+const ArticleCard = (
+  { title, author, created_at, votes, topic, comment_count, article_id },
+  { username }
+) => {
   return (
     <div className="article-card">
       <p className="article-card-topic">{topic}</p>
       <h3 className="article-card-title">
-        <Link to={`/articles/${article_id}`}>{title}</Link>
+        <Link to={`/articles/${article_id}`} username={username}>
+          {title}
+        </Link>
       </h3>
       <p className="article-card-created">{timeFormatter(created_at)}</p>
       <p className="article-card-author">
-        <img src={authorImg} alt="author icon"></img>
-        {author}
+        <Link to={`articles/authors/${author}`} username={username}>
+          <img src={authorImg} alt="author icon"></img>
+          {author}
+        </Link>
       </p>
       <p className="article-card-comments">
-        <img src={commentImg} alt="comment icon"></img>
-        {comment_count}
+        <Link to={`/articles/${article_id}`} username={username}>
+          <img src={commentImg} alt="comment icon"></img>
+          {comment_count}
+        </Link>
       </p>
 
       <Voter article_id={article_id} votes={votes} />
