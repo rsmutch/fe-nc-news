@@ -1,6 +1,6 @@
 import { navigate } from '@reach/router';
 import { useState } from 'react';
-
+import { postNewUser } from './api';
 import Loading from './Loading';
 
 const Register = (props) => {
@@ -20,7 +20,7 @@ const Register = (props) => {
       password.length > 0 &&
       password === passwordRepeat
     ) {
-      console.log(username);
+      postNewUser(username);
       props.setUsername(username);
       navigate(-2);
     } else {
