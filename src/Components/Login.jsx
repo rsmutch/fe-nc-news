@@ -29,6 +29,7 @@ const Login = (props) => {
         setUsernameNotFound(true);
       });
     }
+    setIsLoading(false);
   };
 
   const handleChange = ({ target: { id, value } }) => {
