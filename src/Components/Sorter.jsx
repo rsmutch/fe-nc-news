@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { capitalise } from '../utils/capitalise';
 
 const Sorter = ({ setSortBy, setSortOrder }) => {
   const [sortOptions, setSortOptions] = useState({

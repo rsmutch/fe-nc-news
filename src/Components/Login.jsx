@@ -1,8 +1,10 @@
 import { Link, navigate } from '@reach/router';
 import { useState } from 'react';
 import { getAllUsers } from './api';
+import Loading from './Loading';
 
 const Login = (props) => {
+  const [isLoading, setIsLoading] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [usernameNotFound, setUsernameNotFound] = useState(false);
@@ -10,6 +12,7 @@ const Login = (props) => {
   const [usernameIsBlank, setUserNameIsBlank] = useState(false);
 
   const handleSubmit = (event) => {
+    setIsLoading(true);
     event.preventDefault();
     if (password.length < 1) {
       setPasswordIsBlank(true);
@@ -22,6 +25,7 @@ const Login = (props) => {
             navigate(-1);
           }
         });
+        setIsLoading(false);
         setUsernameNotFound(true);
       });
     }
@@ -75,14 +79,20 @@ const Login = (props) => {
           value={password}
           onChange={handleChange}
           onBlur={handleBlurPassword}
-        />
-        <button type="submit" className="login-button">
-          Login
-        </button>
-        <hr className="login-hr"></hr>
-        <Link className="login-register" to="/register">
-          Register
-        </Link>
+        />{' '}
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <>
+            <button type="submit" className="login-button">
+              Login
+            </button>
+            <hr className="login-hr"></hr>
+            <Link className="login-register" to="/register">
+              Register
+            </Link>
+          </>
+        )}
         {usernameNotFound ? (
           <p className="login-invalid-username">Username not recognised</p>
         ) : null}{' '}

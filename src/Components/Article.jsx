@@ -5,6 +5,7 @@ import { Link } from '@reach/router';
 import commentImg from '../images/comment.svg';
 import Comments from './Comments';
 import Voter from './Voter';
+import Loading from './Loading';
 
 const Article = ({ article_id, username, commentsonload }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -32,7 +33,7 @@ const Article = ({ article_id, username, commentsonload }) => {
     setShowComments(!showComments);
   };
   if (hasError) return <p>{errorMessage}</p>;
-  if (isLoading) return <p>Loading article...</p>;
+  if (isLoading) return <Loading />;
   const { title, body, author, votes, comment_count, created_at } = article;
   return (
     <div className="article-page">

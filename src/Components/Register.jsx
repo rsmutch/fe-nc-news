@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { navigate } from '@reach/router';
-import { postNewUser } from './api';
+import Loading from './Loading';
 
 const Register = (props) => {
+  const [isLoading, setIsLoading] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [passwordRepeat, setPasswordRepeat] = useState('');
@@ -11,14 +12,17 @@ const Register = (props) => {
   const [usernameIsBlank, setUserNameIsBlank] = useState(false);
 
   const handleSubmit = (event) => {
+    setIsLoading(true);
     event.preventDefault();
     if (
       username.length > 0 &&
       password.length > 0 &&
       password === passwordRepeat
     ) {
-      props.setUsername(username);
-      navigate(-2);
+      // props.setUsername(username);
+      // navigate(-2);
+    } else {
+      setIsLoading(false);
     }
   };
 
@@ -92,9 +96,14 @@ const Register = (props) => {
           onChange={handleChange}
           onBlur={handleBlurPassword}
         />
-        <button type="submit" className="register-login-button">
-          Register
-        </button>
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <button type="submit" className="register-login-button">
+            Register
+          </button>
+        )}
+
         {!usernameIsBlank ? null : (
           <p className="register-username-blank">Please enter a username</p>
         )}

@@ -3,6 +3,7 @@ import { deleteComment, getComments } from './api';
 import CommentCard from './CommentCard';
 import CommentAdder from './CommentAdder';
 import { Link } from '@reach/router';
+import Loading from './Loading';
 
 const Comments = ({ article_id, username }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -29,7 +30,7 @@ const Comments = ({ article_id, username }) => {
     setShowCommentAdder(!showCommentAdder);
   };
 
-  if (isLoading) return <p>Loading comments...</p>;
+  if (isLoading) return <Loading />;
   return (
     <div className="comments-container">
       {username ? (

@@ -288,6 +288,11 @@ nav .nav-topic-formControl {
     0 6px 20px 0 rgba(0, 0, 0, 0.089);
 }
 
+.comments-login:hover {
+  transition: background-color 0.6s ease;
+  background-color: #5085a5;
+}
+
 .comment-adder-form {
   display: flex;
   flex-direction: column;
@@ -411,6 +416,12 @@ nav .nav-topic-formControl {
   box-shadow: 0 4px 2px 0 rgba(0, 0, 0, 0.055),
     0 6px 20px 0 rgba(0, 0, 0, 0.089);
   text-transform: uppercase;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  transition: background-color 0.6s ease;
+  background-color: #5085a5;
 }
 
 .login-register {
@@ -431,6 +442,11 @@ nav .nav-topic-formControl {
   text-transform: uppercase;
 }
 
+.login-register:hover {
+  transition: background-color 0.6s ease;
+  background-color: #5085a5;
+}
+
 .login-hr {
   width: 14em;
   color: rgba(255, 255, 255, 0.52);
@@ -447,9 +463,31 @@ nav .nav-topic-formControl {
 }
 
 .register-login-button {
-  width: 16em;
-  justify-self: center;
+  text-align: center;
+  width: 13em;
   margin: 10px;
+  color: black;
+  text-decoration: none;
+  margin-bottom: 10px;
+  border: 1px solid lightgray;
+  background-color: #8fc1e3;
+  color: white;
+  padding: 5px 20px;
+  font-family: sans-serif;
+  font-size: small;
+  box-shadow: 0 4px 2px 0 rgba(0, 0, 0, 0.055),
+    0 6px 20px 0 rgba(0, 0, 0, 0.089);
+  text-transform: uppercase;
+}
+
+.register-login-button:hover {
+  transition: background-color 0.6s ease;
+  background-color: #5085a5;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
 }
 
 @media (max-width: 900px) {

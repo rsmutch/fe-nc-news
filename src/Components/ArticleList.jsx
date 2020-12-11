@@ -2,6 +2,7 @@ import { getArticles } from './api';
 import ArticleCard from './ArticleCard';
 import { useState, useEffect } from 'react';
 import Sorter from './Sorter';
+import Loading from './Loading';
 
 const ArticleList = ({
   topic,
@@ -20,13 +21,9 @@ const ArticleList = ({
       setArticles(res);
       setIsLoading(false);
     });
-    // if (state.username) {
-    //   console.log('test');
-    //   setUsername(state.username);
-    // }
   }, [topic, author, sortBy, sortOrder, setUsername]);
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <Loading />;
   return (
     <div className="article-list">
       <Sorter setSortBy={setSortBy} setSortOrder={setSortOrder} />

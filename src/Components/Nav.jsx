@@ -4,6 +4,7 @@ import { getTopics } from './api';
 import { Link, navigate } from '@reach/router';
 import FormControl from '@material-ui/core/FormControl';
 import NativeSelect from '@material-ui/core/NativeSelect';
+import Loading from './Loading';
 
 const Nav = ({ username, setUsername }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -24,7 +25,7 @@ const Nav = ({ username, setUsername }) => {
     setUsername('');
   };
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <Loading />;
   return (
     <nav>
       {topics.map((topic) => {
