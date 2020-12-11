@@ -119,7 +119,10 @@ nav .nav-topic-formControl {
   display: grid;
   grid-template-columns: 1fr auto;
   grid-template-rows: auto 1fr auto;
-  grid-template-areas: 'topic created' 'title votes' 'author comments';
+  grid-template-areas:
+    'author . topic'
+    'title title title'
+    'created comments votes';
   margin-top: 10px;
   margin-bottom: 10px;
   padding-bottom: 10px;
@@ -139,6 +142,7 @@ nav .nav-topic-formControl {
 .article-card-topic {
   grid-area: topic;
   font-style: italic;
+  text-align: end;
 }
 
 .article-card-title {
@@ -147,7 +151,7 @@ nav .nav-topic-formControl {
   grid-area: title;
   font-size: larger;
   text-overflow: ellipsis;
-  align-self: center;
+  align-self: flex-end;
 }
 
 .article-card-title * {
@@ -168,7 +172,8 @@ nav .nav-topic-formControl {
 
 .article-card-created {
   grid-area: created;
-  justify-self: flex-end;
+  justify-self: flex-start;
+  align-self: flex-end;
 }
 
 .article-card-comments {
@@ -179,6 +184,7 @@ nav .nav-topic-formControl {
 .article-card-comments * {
   text-decoration: none;
   color: black;
+  margin-right: 10px;
 }
 
 .article-card-comments img {
@@ -543,23 +549,6 @@ nav .nav-topic-formControl {
 
   .article-card {
     height: fit-content;
-    grid-template-areas:
-      'author . topic'
-      'title title title'
-      'created comments votes';
-  }
-
-  .article-card-created {
-    justify-self: flex-start;
-    align-self: flex-end;
-  }
-
-  .article-card-topic {
-    text-align: end;
-  }
-
-  .article-card-comments * {
-    margin-right: 10px;
   }
 }
 @media (max-width: 500px) {
