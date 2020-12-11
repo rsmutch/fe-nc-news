@@ -5,13 +5,7 @@ import Sorter from './Sorter';
 import Loading from './Loading';
 import ErrorDisplay from './Error';
 
-const ArticleList = ({
-  topic,
-  author,
-  username,
-  setUsername,
-  location: { state }
-}) => {
+const ArticleList = ({ topic, author, username, setUsername }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [errorMessage, setErrorMessage] = useState({});
@@ -26,7 +20,6 @@ const ArticleList = ({
         setIsLoading(false);
       })
       .catch((err) => {
-        console.dir(err);
         const {
           response: {
             status,

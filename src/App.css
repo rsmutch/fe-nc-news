@@ -543,6 +543,23 @@ nav .nav-topic-formControl {
 
   .article-card {
     height: fit-content;
+    grid-template-areas:
+      'author . topic'
+      'title title title'
+      'created comments votes';
+  }
+
+  .article-card-created {
+    justify-self: flex-start;
+    align-self: flex-end;
+  }
+
+  .article-card-topic {
+    text-align: end;
+  }
+
+  .article-card-comments * {
+    margin-right: 10px;
   }
 }
 @media (max-width: 500px) {
@@ -557,5 +574,10 @@ nav .nav-topic-formControl {
     display: inline-block;
     align-self: center;
     width: 100px;
+  }
+
+  .sorter {
+    display: flex;
+    justify-content: center;
   }
 }

@@ -8,7 +8,7 @@ import Voter from './Voter';
 import Loading from './Loading';
 import ErrorDisplay from './Error';
 
-const Article = ({ article_id, username, commentsonload }) => {
+const Article = ({ article_id, username }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [errorMessage, setErrorMessage] = useState({});
