@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import Header from './Components/Header';
 import { Router } from '@reach/router';
@@ -8,7 +8,7 @@ import Article from './Components/Article';
 import Login from './Components/Login';
 import Register from './Components/Register';
 
-const App = (props) => {
+const App = () => {
   const [username, setUsername] = useState('');
   return (
     <div className="App">

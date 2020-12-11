@@ -11,16 +11,20 @@ const Login = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    getAllUsers().then((users) => {
-      users.forEach((user) => {
-        if (user.username === username && password.length > 0) {
-          props.setUsername(username);
-          navigate(-1);
-        } else {
-          setUsernameNotFound(true);
-        }
+    if (password.length < 1) {
+      setPasswordIsBlank(true);
+    } else if (password.length > 0) {
+      setPasswordIsBlank(false);
+      getAllUsers().then((users) => {
+        users.forEach((user) => {
+          if (user.username === username) {
+            props.setUsername(username);
+            navigate(-1);
+          }
+        });
+        setUsernameNotFound(true);
       });
-    });
+    }
   };
 
   const handleChange = ({ target: { id, value } }) => {

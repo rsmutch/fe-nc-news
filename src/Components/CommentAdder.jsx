@@ -21,9 +21,8 @@ const CommentAdder = ({
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setJustAdded(newComment);
     postComment(article_id, newComment.body, username).then((res) => {
-      setComments([...comments, res]);
+      setComments([res, ...comments]);
     });
     setCommentAdded(true);
     setNewComment({ body: '' });
@@ -39,6 +38,7 @@ const CommentAdder = ({
         onChange={handleChange}
         // rows="10"
         // cols="50"
+        required
       ></textarea>
       <>
         <p>{charRemaining} characters remaining</p>

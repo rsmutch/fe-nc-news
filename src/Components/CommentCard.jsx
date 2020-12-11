@@ -7,12 +7,11 @@ const CommentCard = ({
   created_at,
   votes,
   comment_id,
-  deleteComment,
+  removeComment,
   username
 }) => {
   const handleClick = () => {
-    console.log('goodbye');
-    deleteComment(comment_id);
+    removeComment(comment_id);
   };
   return (
     <div className="comment-card">

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getComments } from './api';
+import { deleteComment, getComments } from './api';
 import CommentCard from './CommentCard';
 import CommentAdder from './CommentAdder';
 import { Link } from '@reach/router';
@@ -8,18 +8,21 @@ const Comments = ({ article_id, username }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [comments, setComments] = useState([]);
   const [showCommentAdder, setShowCommentAdder] = useState(false);
-  const [justAdded, setJustAdded] = useState();
 
   useEffect(() => {
     getComments(article_id).then((res) => {
       setComments(res);
       setIsLoading(false);
     });
-  }, [article_id, justAdded]);
+  }, [article_id]);
 
-  const deleteComment = (comment_id) => {
-    console.log('hello');
+  const removeComment = (comment_id) => {
     deleteComment(comment_id);
+    setComments(
+      comments.filter((comment) => {
+        return comment.comment_id !== comment_id;
+      })
+    );
   };
 
   const toggleCommentAdder = () => {
@@ -36,7 +39,6 @@ const Comments = ({ article_id, username }) => {
             username={username}
             comments={comments}
             setComments={setComments}
-            setJustAdded={setJustAdded}
           />
         ) : (
           <button className="toggle-comment-adder" onClick={toggleCommentAdder}>
@@ -53,7 +55,7 @@ const Comments = ({ article_id, username }) => {
           <CommentCard
             key={comment.comment_id}
             {...comment}
-            deleteComment={deleteComment}
+            removeComment={removeComment}
             username={username}
           />
         );
