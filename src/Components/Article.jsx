@@ -6,6 +6,7 @@ import commentImg from '../images/comment.svg';
 import Comments from './Comments';
 import Voter from './Voter';
 import Loading from './Loading';
+import ErrorDisplay from './Error';
 
 const Article = ({ article_id, username, commentsonload }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -21,18 +22,28 @@ const Article = ({ article_id, username, commentsonload }) => {
         setIsLoading(false);
       })
       .catch((err) => {
+        console.dir(err);
         const {
-          response: { status, statusText }
+          response: {
+            status,
+            data: { msg }
+          }
         } = err;
         setHasError(true);
-        setErrorMessage({ status, statusText });
+        setErrorMessage({ status, statusText: msg });
       });
   }, [article_id]);
 
   const toggleComments = () => {
     setShowComments(!showComments);
   };
-  if (hasError) return <p>{errorMessage}</p>;
+  if (hasError)
+    return (
+      <ErrorDisplay
+        errCode={errorMessage.status}
+        errMessage={errorMessage.statusText}
+      />
+    );
   if (isLoading) return <Loading />;
   const { title, body, author, votes, comment_count, created_at } = article;
   return (

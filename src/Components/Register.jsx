@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { navigate } from '@reach/router';
 import Loading from './Loading';
 
 const Register = (props) => {

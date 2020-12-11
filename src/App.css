@@ -490,6 +490,22 @@ nav .nav-topic-formControl {
   justify-content: center;
 }
 
+.error-display-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.error-display-number {
+  font-size: 25vw;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.error-display-message {
+  font-size: 3vw;
+}
+
 @media (max-width: 900px) {
   body {
     /* background-color: lightblue; */
