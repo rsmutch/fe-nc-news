@@ -3,7 +3,13 @@ import ArticleCard from './ArticleCard';
 import { useState, useEffect } from 'react';
 import Sorter from './Sorter';
 
-const ArticleList = ({ topic, author, username, setUsername, location }) => {
+const ArticleList = ({
+  topic,
+  author,
+  username,
+  setUsername,
+  location: { state }
+}) => {
   const [isLoading, setIsLoading] = useState(true);
   const [articles, setArticles] = useState([]);
   const [sortBy, setSortBy] = useState('');
@@ -14,10 +20,11 @@ const ArticleList = ({ topic, author, username, setUsername, location }) => {
       setArticles(res);
       setIsLoading(false);
     });
-    if (location.state.username) {
-      setUsername(location.state.username);
-    }
-  }, [topic, author, sortBy, sortOrder, location.state.username, setUsername]);
+    // if (state.username) {
+    //   console.log('test');
+    //   setUsername(state.username);
+    // }
+  }, [topic, author, sortBy, sortOrder, setUsername]);
 
   if (isLoading) return <p>Loading...</p>;
   return (

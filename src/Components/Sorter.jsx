@@ -17,7 +17,7 @@ const Sorter = ({ setSortBy, setSortOrder }) => {
   };
 
   return (
-    <form>
+    <form className="sorter">
       <label htmlFor="sort-options">Sort</label>
       <select name="sort-options" onChange={handleChange}>
         {Object.entries(sortOptions).map(([optionKey, optionValue]) => {

@@ -1,4 +1,4 @@
-import { navigate } from '@reach/router';
+import { Link, navigate } from '@reach/router';
 import { useState } from 'react';
 import { getAllUsers } from './api';
 
@@ -80,14 +80,9 @@ const Login = (props) => {
           Login
         </button>
         <hr className="login-hr"></hr>
-        <button
-          className="login-register"
-          onClick={() => {
-            navigate('/register');
-          }}
-        >
+        <Link className="login-register" to="/register">
           Register
-        </button>
+        </Link>
         {usernameNotFound ? (
           <p className="login-invalid-username">Username not recognised</p>
         ) : null}{' '}

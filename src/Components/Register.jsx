@@ -10,17 +10,15 @@ const Register = (props) => {
   const [passwordIsBlank, setPasswordIsBlank] = useState(false);
   const [usernameIsBlank, setUserNameIsBlank] = useState(false);
 
-  const validateForm = () => {
-    return (
-      username.length > 0 && password.length > 0 && password === passwordRepeat
-    );
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    postNewUser(username);
-    if (validateForm()) {
-      navigate('/', { state: { username } });
+    if (
+      username.length > 0 &&
+      password.length > 0 &&
+      password === passwordRepeat
+    ) {
+      props.setUsername(username);
+      navigate(-2);
     }
   };
 
