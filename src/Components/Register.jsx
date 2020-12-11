@@ -1,4 +1,6 @@
+import { navigate } from '@reach/router';
 import { useState } from 'react';
+
 import Loading from './Loading';
 
 const Register = (props) => {
@@ -18,8 +20,9 @@ const Register = (props) => {
       password.length > 0 &&
       password === passwordRepeat
     ) {
-      // props.setUsername(username);
-      // navigate(-2);
+      console.log(username);
+      props.setUsername(username);
+      navigate(-2);
     } else {
       setIsLoading(false);
     }

@@ -569,4 +569,8 @@ nav .nav-topic-formControl {
     display: flex;
     justify-content: center;
   }
+
+  .error-display-message {
+    font-size: 7vw;
+  }
 }
