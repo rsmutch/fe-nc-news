@@ -51,7 +51,6 @@ const ArticleList = ({ topic, author, username, setUsername }) => {
           />
         );
       })}
-      ;
     </div>
   );
 };

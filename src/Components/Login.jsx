@@ -25,7 +25,6 @@ const Login = (props) => {
             navigate(-1);
           }
         });
-        setIsLoading(false);
         setUsernameNotFound(true);
       });
     }
@@ -50,6 +49,7 @@ const Login = (props) => {
 
   const handleBlurUsername = () => {
     if (username.length < 1) {
+      setUsernameNotFound(false);
       setUserNameIsBlank(true);
     } else {
       setUserNameIsBlank(false);
@@ -94,13 +94,13 @@ const Login = (props) => {
             </Link>
           </>
         )}
-        {usernameNotFound ? (
+        {usernameNotFound && (
           <p className="login-invalid-username">Username not recognised</p>
-        ) : null}{' '}
-        {!usernameIsBlank ? null : (
+        )}{' '}
+        {usernameIsBlank && (
           <p className="register-username-blank">Please enter a username</p>
         )}
-        {!passwordIsBlank ? null : (
+        {passwordIsBlank && (
           <p className="register-passwords-blank">Please enter a password</p>
         )}
       </form>

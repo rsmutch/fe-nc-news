@@ -49,12 +49,12 @@ const Article = ({ article_id, username }) => {
   return (
     <div className="article-page">
       <div className="article-container">
-        <h3 className="article-container-title">{title}</h3>
-        <h4 className="article-container-author">
+        <h2 className="article-container-title">{title}</h2>
+        <h3 className="article-container-author">
           <Link to={`articles/authors/${author}`} username={username}>
             by {author}
           </Link>
-        </h4>
+        </h3>
         <p className="article-container-created">{timeFormatter(created_at)}</p>
         <p className="article-container-body">{body}</p>
         <Voter article_id={article_id} votes={votes} />
@@ -78,9 +78,7 @@ const Article = ({ article_id, username }) => {
           </div>
         )}
       </div>
-      {showComments ? (
-        <Comments article_id={article_id} username={username} />
-      ) : null}
+      {showComments && <Comments article_id={article_id} username={username} />}
     </div>
   );
 };

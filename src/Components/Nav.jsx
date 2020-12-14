@@ -31,7 +31,7 @@ const Nav = ({ username, setUsername }) => {
       {topics.map((topic) => {
         return (
           <Link className="nav" key={topic.slug} to={`topics/${topic.slug}`}>
-            <li>{capitalise(topic.slug)}</li>
+            <div>{capitalise(topic.slug)}</div>
           </Link>
         );
       })}

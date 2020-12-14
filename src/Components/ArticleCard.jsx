@@ -11,14 +11,14 @@ const ArticleCard = (
   return (
     <div className="article-card">
       <p className="article-card-topic">{topic}</p>
-      <h3 className="article-card-title">
+      <h2 className="article-card-title">
         <Link to={`/articles/${article_id}`} username={username}>
           {title}
         </Link>
-      </h3>
+      </h2>
       <p className="article-card-created">{timeFormatter(created_at)}</p>
       <p className="article-card-author">
-        <Link to={`articles/authors/${author}`} username={username}>
+        <Link to={`/articles/authors/${author}`} username={username}>
           <img src={authorImg} alt="author icon"></img>
           {author}
         </Link>

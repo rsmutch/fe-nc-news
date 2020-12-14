@@ -22,11 +22,11 @@ const CommentCard = ({
         <Voter comment_id={comment_id} votes={votes} />
       </div>
       <div className="comment-card-delete">
-        {username === author ? (
+        {username === author && (
           <div onClick={handleClick} className="delete-x">
             Delete
           </div>
-        ) : null}
+        )}
       </div>
     </div>
   );

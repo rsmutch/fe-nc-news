@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 const Sorter = ({ setSortBy, setSortOrder }) => {
-  const [sortOptions, setSortOptions] = useState({
+  const [sortOptions] = useState({
     created_at: 'Date',
     comment_count: 'Comments',
     votes: 'Votes'
@@ -18,7 +18,7 @@ const Sorter = ({ setSortBy, setSortOrder }) => {
   return (
     <form className="sorter">
       <label htmlFor="sort-options">Sort</label>
-      <select name="sort-options" onChange={handleChange}>
+      <select name="sort-options" id="sort-options" onChange={handleChange}>
         {Object.entries(sortOptions).map(([optionKey, optionValue]) => {
           return (
             <option key={optionKey} value={optionKey}>
@@ -27,10 +27,17 @@ const Sorter = ({ setSortBy, setSortOrder }) => {
           );
         })}
       </select>
-      <select name="sort-options-dir" onChange={handleChange}>
-        <option value="">Descending</option>
-        <option value="asc">Ascending</option>
-      </select>
+      <label htmlFor="sort-options-dir">
+        Order
+        <select
+          name="sort-options-dir"
+          id="sort-options-dir"
+          onChange={handleChange}
+        >
+          <option value="">Descending</option>
+          <option value="asc">Ascending</option>
+        </select>
+      </label>
     </form>
   );
 };

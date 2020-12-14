@@ -106,15 +106,15 @@ const Register = (props) => {
           </button>
         )}
 
-        {!usernameIsBlank ? null : (
+        {usernameIsBlank && (
           <p className="register-username-blank">Please enter a username</p>
         )}
-        {passwordsMatch ? null : (
+        {!passwordsMatch && (
           <p className="register-passwords-match">
             Those passwords didn't match. Try again.
           </p>
         )}
-        {!passwordIsBlank ? null : (
+        {passwordIsBlank && (
           <p className="register-passwords-blank">Please enter a password</p>
         )}
       </form>
