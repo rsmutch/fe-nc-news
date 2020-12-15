@@ -51,7 +51,7 @@ const Article = ({ article_id, username }) => {
       <div className="article-container">
         <h2 className="article-container-title">{title}</h2>
         <h3 className="article-container-author">
-          <Link to={`articles/authors/${author}`} username={username}>
+          <Link to={`/articles/authors/${author}`} username={username}>
             by {author}
           </Link>
         </h3>
